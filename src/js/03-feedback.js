@@ -17,14 +17,15 @@ function onForm(event){
     formData[event.target.name] = event.target.value;
     console.log(formData);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
-}
+};
 
 function onSubmitBtn(ev){
+  console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)));
   ev.preventDefault();
-  console.log(ev.target.value);
+  // console.log(ev.target.value);
   ev.currentTarget.reset();
   localStorage.removeItem(STORAGE_KEY);
-}
+};
 
 function saveMassage() {
   const context = JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -33,5 +34,6 @@ function saveMassage() {
   if (context) {
     email.value = context.email;
     message.value = context.message;
+    message.autocomplete = 'off';
   }
 }
