@@ -1,9 +1,10 @@
-import Player from '@vimeo/player';
+// import Player from '@vimeo/player';
 const throttle = require('lodash.throttle');
+const player = new Viemo.Player(iframe);
 
 const PLAYER_SAVE_TIME = 'videoplayer-current-time';
 const iframe = document.querySelector('iframe');
-const player = new Player(iframe);
+
 
 player.on('timeupdate', throttle(timeToPlay, 1000));
    
