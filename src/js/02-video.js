@@ -12,5 +12,3 @@ function timeToPlay({seconds}) {
 };
 player.setVolume(0.1); //настройка лично от себя, надоело что громко воспроизводится))
 player.setCurrentTime(localStorage.getItem(PLAYER_SAVE_TIME));
-
-

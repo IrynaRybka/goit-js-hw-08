@@ -9,13 +9,12 @@ const form = document.querySelector('.feedback-form');
 form.addEventListener('input', throttle(onForm, 500));
 form.addEventListener('submit', onSubmitBtn);
 
-saveMassage();
-
 let formData = {};
+
+saveContextForm();
 
 function onForm(event){
     formData[event.target.name] = event.target.value;
-    console.log(formData);
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
 };
 
@@ -25,15 +24,15 @@ function onSubmitBtn(ev){
   // console.log(ev.target.value);
   ev.currentTarget.reset();
   localStorage.removeItem(STORAGE_KEY);
+
 };
 
-function saveMassage() {
+function saveContextForm() {
   const context = JSON.parse(localStorage.getItem(STORAGE_KEY));
   const email = document.querySelector('.feedback-form input');
   const message = document.querySelector('.feedback-form textarea');
   if (context) {
-    email.value = context.email;
-    message.value = context.message;
-    message.autocomplete = 'off';
+    email.value = context.email || '';
+    message.value = context.message || ''; 
   }
 }
